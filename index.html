@@ -32,6 +32,7 @@
   <h1>BenjaMath:</h1>
   <textarea id="editor" rows="10" cols="80"></textarea>
   <h2>Result:</h2>
+  <div id="preview"></div>
   <script>
     CKEDITOR.replace("editor");
 
@@ -43,7 +44,12 @@
     console.log(eq1.toString());
     console.log(eq1.solveFor("z").toString());
 
-    $("body").append(CKEDITOR.instances.editor.getData());
+    setInterval(function() {
+      $("#preview").empty();
+      $("#preview").append(CKEDITOR.instances.editor.getData());
+    }, 500);
+
+
   </script>
 </body>
 </html>
