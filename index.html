@@ -42,8 +42,8 @@
     console.log(eq1.toString());
     console.log(eq1.solveFor("z").toString());
 
-    katex.render(algebra.toTex(eq1), test);
     katex.render("z=" + algebra.toTex(eq1.solveFor("z")), test1);
+    $("#test").html(katex.renderToString(algebra.toTex(eq1)));
   </script>
 </body>
 </html>
