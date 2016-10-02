@@ -36,6 +36,8 @@
   <script>
     CKEDITOR.replace("editor");
 
+    CKEDITOR.instances.editor.setData("<h1>Testman</h1>");
+
     var z = new Expression("z");
 
     var eq1 = new Equation(z.multiply(2), z.pow(3));
@@ -43,7 +45,7 @@
     console.log(eq1.solveFor("z").toString());
 
     katex.render("z=" + algebra.toTex(eq1.solveFor("z")), test1);
-    $("#test").html(katex.renderToString(algebra.toTex(eq1)));
+    $("h1").html(katex.renderToString(algebra.toTex(eq1)));
   </script>
 </body>
 </html>
