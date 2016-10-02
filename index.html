@@ -29,10 +29,9 @@
 </head>
 
 <body>
-  <h1>Test</h1>
-  <div id="test"></div>
-  <div id="test1"></div>
+  <h1>BenjaMath:</h1>
   <textarea id="editor" rows="10" cols="80"></textarea>
+  <h2>Result:</h2>
   <script>
     CKEDITOR.replace("editor");
 
@@ -44,8 +43,7 @@
     console.log(eq1.toString());
     console.log(eq1.solveFor("z").toString());
 
-    katex.render("z=" + algebra.toTex(eq1.solveFor("z")), test1);
-    $("h1").html(katex.renderToString(algebra.toTex(eq1)));
+    $("body").append(CKEDITOR.instances.editor.getData());
   </script>
 </body>
 </html>
