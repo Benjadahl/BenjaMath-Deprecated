@@ -20,13 +20,22 @@
   <script src="katex/katex.min.js"></script>
   <link rel="stylesheet" href="katex/katex.min.css">
 
+  <!-- Load CKEditor -->
+  <script src="ckeditor/ckeditor.js"></script>
+
+  <!-- Load jQuery-->
+  <script src="jquery-3.1.1.min.js"></script>
+
 </head>
 
 <body>
   <h1>Test</h1>
   <div id="test"></div>
   <div id="test1"></div>
+  <textarea id="editor" rows="10" cols="80"></textarea>
   <script>
+    CKEDITOR.replace("editor");
+
     var z = new Expression("z");
 
     var eq1 = new Equation(z.multiply(2), z.pow(3));
