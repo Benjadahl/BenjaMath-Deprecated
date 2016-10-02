@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>BenjaMath</title>
+  <meta name="description" content="A webapp for marking math assignments and scientific papers">
+  <meta name="author" content="Benjadahl">
+
+  <!-- Load algebra.js -->
+  <script src="algebra-0.2.5.min.js"></script>
+  <script>
+    var Fraction = algebra.Fraction;
+    var Expression = algebra.Expression;
+    var Equation = algebra.Equation;
+  </script>
+
+  <!-- Load katex -->
+  <script src="katex/katex.min.js"></script>
+  <link rel="stylesheet" href="katex/katex.min.css">
+
+</head>
+
+<body>
+  <h1>Test</h1>
+  <div id="test"></div>
+  <div id="test1"></div>
+  <script>
+    var z = new Expression("z");
+
+    var eq1 = new Equation(z.multiply(2), z.pow(3));
+    console.log(eq1.toString());
+    console.log(eq1.solveFor("z").toString());
+
+    katex.render(algebra.toTex(eq1), test);
+    katex.render("z=" + algebra.toTex(eq1.solveFor("z")), test1);
+  </script>
+</body>
+</html>
