@@ -11,8 +11,8 @@ function renderPreview(){
   var eData = CKEDITOR.instances.editor.getData();
   var data = parser.parseFromString(eData, "text/html");
   var preTags = data.getElementsByTagName("pre");
-  console.log(data);
   for (T of preTags){
+    console.log(T);
     userExpressions.push(new algebra.parse(T.innerHTML));
     $(T).replaceWith(katex.renderToString(math.parse(T.innerHTML).toTex() + "=" + userExpressions[userExpressions.length - 1]));
   }
