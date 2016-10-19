@@ -11,10 +11,12 @@ function renderPreview(){
   var eData = CKEDITOR.instances.editor.getData();
   var data = parser.parseFromString(eData, "text/html");
   var preTags = data.getElementsByTagName("pre");
-  for (T of preTags){
-    console.log(T);
-    userExpressions.push(new algebra.parse(T.innerHTML));
-    $(T).replaceWith(katex.renderToString(math.parse(T.innerHTML).toTex() + "=" + userExpressions[userExpressions.length - 1]));
+  //This loop check wheter there are any elements in the pretags array.
+  //If there is take the one at position 0 and replace it. This works because the list is live updating.
+  while(preTags.length > 0){
+    var element = preTags[0];
+    userExpressions.push(new algebra.parse(element.innerHTML));
+    $(element).replaceWith(katex.renderToString(math.parse(element.innerHTML).toTex() + "=" + userExpressions[userExpressions.length - 1]));
   }
   $("#preview").append(data.getElementsByTagName("body")[0].innerHTML);
 }
