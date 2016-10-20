@@ -6,6 +6,11 @@ parser = new DOMParser();
 
 var userExpressions = [];
 
+function solve (eq, variable) {
+  eq = new algebra.parse(eq);
+  return eq.solveFor(variable).toString();
+}
+
 function renderPreview(){
   $("#preview").empty();
   var eData = CKEDITOR.instances.editor.getData();
@@ -19,8 +24,20 @@ function renderPreview(){
     var mathArray = element.innerHTML.split("\n");
     for (m of mathArray){
       if(m !== ""){
-        userExpressions.push(new algebra.parse(m));
-        replaceString += katex.renderToString(math.parse(m).toTex() + "=" + userExpressions[userExpressions.length - 1]) + "<br>";
+        var curlyOpen = m.indexOf("{");
+        if(curlyOpen !== -1){
+          var curlyClose = m.indexOf("}");
+          if(curlyClose !== -1){
+            var args = m.substring(curlyOpen + 1 , curlyClose);
+            args = args.split(",");
+            var ls = args[1];
+            var rs = window[m.substring(0, curlyOpen)](args[0], args[1]);
+            userExpressions.push({"ls": ls, "rs": rs});
+          }
+        }else{
+          userExpressions.push({"ls": m, "rs": new algebra.parse(m).toString()});
+        }
+        replaceString += katex.renderToString(math.parse(userExpressions[userExpressions.length - 1].ls).toTex() + "=" + math.parse(userExpressions[userExpressions.length - 1].rs).toTex()) + "<br>";
       }
     }
     $(element).replaceWith(replaceString);
@@ -29,6 +46,6 @@ function renderPreview(){
 }
 
 setInterval(function() {
-  renderPreview();
+  window["renderPreview"]();
 
 }, 500);
