@@ -41,6 +41,9 @@ function renderPreview(){
           if (curlyClose !== -1){
             var args = m.substring(curlyOpen + 1 , curlyClose);
             args = args.split(",");
+            if (typeof args[1] !== "string"){
+              args[1] = "x";
+            }
             var ls = args[1];
             var rs = window[m.substring(0, curlyOpen)](args[0], args[1]);
             userExpressions.push({ls: ls, rs: {string: solutionToArray(rs.string)}});
