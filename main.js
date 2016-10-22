@@ -40,7 +40,8 @@ function renderPreview(){
           userExpressions.push({ls: m, rs: {string: new algebra.parse(m).toString()}});
         }
         console.log(userExpressions);
-        replaceString += katex.renderToString(math.parse(userExpressions[userExpressions.length - 1].ls).toTex() + "=" + math.parse(userExpressions[userExpressions.length - 1].rs.string).toTex()) + "<br>";      }
+        replaceString += katex.renderToString(math.parse(userExpressions[userExpressions.length - 1].ls).toTex() + "=" + math.parse(userExpressions[userExpressions.length - 1].rs.string).toTex()) + "<br>";
+      }
     }
     $(element).replaceWith(replaceString);
   }
