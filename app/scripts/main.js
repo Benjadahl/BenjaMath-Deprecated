@@ -2,7 +2,7 @@ CKEDITOR.config.height = '75vh';
 
 CKEDITOR.replace("editor");
 
-CKEDITOR.instances.editor.setData("<h3>Example of use:</h3><pre>2*2<br>solve{x^2=4,x}</pre>");
+CKEDITOR.instances.editor.setData("<h3>Example of use:</h3><pre>2*2<br>3^3<br>solve{x^2=4,x}</pre>");
 
 parser = new DOMParser();
 
