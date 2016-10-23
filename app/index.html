@@ -11,8 +11,9 @@
   <!--Load custom stylesheet-->
   <link rel="stylesheet" href="styles/index.css">
 
+
   <!-- Load algebra.js -->
-  <script src="../vendor/algebra-0.2.5.min.js"></script>
+  <script src="vendor/algebra-0.2.5.min.js"></script>
   <script>
     var Fraction = algebra.Fraction;
     var Expression = algebra.Expression;
@@ -20,17 +21,23 @@
   </script>
 
   <!-- Load Math.js-->
-  <script src="../vendor/math.min.js"></script>
+  <script src="vendor/math.min.js"></script>
 
   <!-- Load katex -->
-  <script src="../vendor/katex/katex.min.js"></script>
-  <link rel="stylesheet" href="../vendor/katex/katex.min.css">
+  <script src="vendor/katex/katex.min.js"></script>
+  <link rel="stylesheet" href="vendor/katex/katex.min.css">
 
   <!-- Load CKEditor -->
-  <script src="../vendor/ckeditor/ckeditor.js"></script>
+  <script src="vendor/ckeditor/ckeditor.js"></script>
+
+  <!-- Workaround for jquery import (start)-->
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
   <!-- Load jQuery-->
-  <script src="../vendor/jquery-3.1.1.min.js"></script>
+  <script src="vendor/jquery-3.1.1.min.js"></script>
+
+  <!--Workaround for jquery import (end)-->
+  <script>if (window.module) module = window.module;</script>
 
 </head>
 
