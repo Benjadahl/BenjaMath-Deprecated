@@ -34,9 +34,12 @@ app.on('window-all-closed', function () {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
+    py.kill('SIGINT');
     app.quit();
   }
 })
+
+var py = require('child_process').spawn('python3',['hello.py'])
 
 app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
