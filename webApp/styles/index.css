@@ -10,3 +10,7 @@
 #previewContainer {
   flex-grow: 1;
 }
+
+.header {
+  font-family: sans-serif;
+}
