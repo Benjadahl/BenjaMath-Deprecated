@@ -39,6 +39,15 @@
   <!--Workaround for jquery import (end)-->
   <script>if (window.module) module = window.module;</script>
 
+  <script>
+      $.ajax({
+        type: "POST",
+        url: "/test/",
+        data: "dataTest",
+        success: console.log("yay")
+      })
+  </script>
+
 </head>
 
 <body>
