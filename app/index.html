@@ -34,23 +34,18 @@
   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
   <!-- Load jQuery-->
-  <script src="vendor/jquery-3.1.1.min.js"></script>
+  <script src="../static/scripts/jquery-3.1.1.min.js"></script>
 
   <!--Workaround for jquery import (end)-->
   <script>if (window.module) module = window.module;</script>
 
-  <script>
-      $.ajax({
-        type: "POST",
-        url: "/test/",
-        data: "dataTest",
-        success: console.log("yay")
-      })
-  </script>
+  <!--Import Electron handler-->
+  <script src="scripts/electronHandler.js"></script>
 
 </head>
 
 <body>
+  <iframe id="test" name ="test" src="http://localhost:5000/mathServer/" style="visibility:hidden;display:none"></iframe>
   <div id="mainContainer">
     <div id="editorContainer">
       <h1 class="header">BenjaMath</h1>

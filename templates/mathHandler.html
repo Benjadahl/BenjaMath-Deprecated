@@ -1,0 +1,15 @@
+<script src="{{ url_for('static', filename = 'scripts/jquery-3.1.1.min.js') }}"></script>
+<script>
+  function processMath(){
+    $.ajax({
+      type: "POST",
+      contentType: "application/json",
+      url: "/sendMath/",
+      data: JSON.stringify("dataTest"),
+      success: function(msg, status, jqXHR){
+        console.log("Getting data from post request");
+        console.log(msg);
+      }
+    });
+  }
+</script>

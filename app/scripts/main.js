@@ -8,6 +8,12 @@ parser = new DOMParser();
 
 var userExpressions = [];
 
+$(document).ready(function(){
+  setTimeout(function () {
+    window.frames['test'].processMath();
+  }, 5000);
+});
+
 //Function to solve the equations
 function solve (eq, variable) {
   eq = new algebra.parse(eq);

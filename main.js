@@ -10,10 +10,12 @@ let mainWindow;
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({width: 800, height: 600, 'web-preferences': {'web-security': false}});
 
   // and load the index.html of the app.
+  //mainWindow.loadURL(`file://${__dirname}/app/index.html`);
   mainWindow.loadURL(`file://${__dirname}/app/index.html`);
+  mainWindow.toggleDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -39,7 +41,7 @@ app.on('window-all-closed', function () {
   }
 })
 
-var py = require('child_process').spawn('python3',['hello.py'])
+var py = require('child_process').spawn('python3',['mathServer.py'])
 
 app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
