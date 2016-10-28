@@ -10,7 +10,7 @@ var userExpressions = [];
 
 $(document).ready(function(){
   setTimeout(function () {
-    window.frames['test'].processMath();
+    console.log(window.frames['mathFrame'].processMath());
   }, 5000);
 });
 

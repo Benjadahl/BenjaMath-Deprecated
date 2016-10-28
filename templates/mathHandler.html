@@ -1,15 +1,22 @@
 <script src="{{ url_for('static', filename = 'scripts/jquery-3.1.1.min.js') }}"></script>
 <script>
-  function processMath(){
+  function asyncAjax(aUrl, aData){
+    let response;
     $.ajax({
       type: "POST",
       contentType: "application/json",
-      url: "/sendMath/",
-      data: JSON.stringify("dataTest"),
+      url: aUrl,
+      data: JSON.stringify(aData),
       success: function(msg, status, jqXHR){
         console.log("Getting data from post request");
-        console.log(msg);
-      }
+        response = msg;
+      },
+      async: false
     });
+    return response;
+  }
+
+  function processMath(){
+    return(asyncAjax("/sendMath/", "testData"));
   }
 </script>
