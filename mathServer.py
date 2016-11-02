@@ -3,6 +3,7 @@
 from flask import *
 from mpmath import *
 from sympy import *
+from sympy.parsing.sympy_parser import parse_expr
 
 app = Flask(__name__)
 
@@ -16,6 +17,19 @@ def sendMath():
     print("Got a math request")
     print(request.json)
     return "DankMemerMan"
+
+@app.route('/solveEq/', methods=['POST'])
+def solveEq():
+    print(request.json)
+    expressions = request.json["eq"].split("=")
+    variable = request.json["variable"]
+    #Loop through the list while both keeping the value and the index stored
+    for i, expression in enumerate(expressions):
+        expressions[i] = parse_expr(expression)
+    eq = expressions[0] - expressions[1]
+    print("soloutions are:")
+    print(solve(eq, Symbol(variable)))
+    return "eq"
 
 if __name__ == "__main__":
     print('oh hello')

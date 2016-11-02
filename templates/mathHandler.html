@@ -19,4 +19,8 @@
   function processMath(){
     return(asyncAjax("/sendMath/", "testData"));
   }
+
+  function solveEq(eq, variable){
+    return(asyncAjax("/solveEq/", {"eq": eq, "variable": variable}))
+  }
 </script>
