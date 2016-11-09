@@ -28,8 +28,9 @@ def solveEq():
         expressions[i] = parse_expr(expression)
     eq = expressions[0] - expressions[1]
     print("soloutions are:")
+    #, Symbol(variable)
     print(solve(eq, Symbol(variable)))
-    return "eq"
+    return jsonify(solve(eq, Symbol(variable)))
 
 if __name__ == "__main__":
     print('oh hello')

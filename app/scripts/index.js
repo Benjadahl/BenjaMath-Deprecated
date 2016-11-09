@@ -11,7 +11,8 @@ var userExpressions = [];
 $(document).ready(function(){
   setTimeout(function () {
     console.log(window.frames['mathFrame'].processMath());
-    console.log(window.frames['mathFrame'].solveEq("2y=x*3", "y"));
+    console.log(window.frames['mathFrame'].solveEq("2=y*3","y"));
+    console.log(window.frames['mathFrame'].solveEq("4=z**2","z"));
   }, 5000);
 });
 
