@@ -15,13 +15,11 @@ def hello():
 
 @app.route('/sendMath/', methods=['POST'])
 def sendMath():
-    print("Got a math request")
-    print(request.json)
-    return "DankMemerMan"
+    result = str(parse_expr(request.json).evalf())
+    return (json.dumps(result))
 
 @app.route('/solveEq/', methods=['POST'])
 def solveEq():
-    print(request.json)
     expressions = request.json["eq"].split("=")
     variable = request.json["variable"]
     #Loop through the list while both keeping the value and the index stored
@@ -32,5 +30,5 @@ def solveEq():
     return json.dumps(results)
 
 if __name__ == "__main__":
-    print('oh hello')
+    print("Starting Math Server")
     app.run(debug=True, host="0.0.0.0")
