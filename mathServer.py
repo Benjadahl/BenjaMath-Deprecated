@@ -4,6 +4,7 @@ from flask import *
 from mpmath import *
 from sympy import *
 from sympy.parsing.sympy_parser import parse_expr
+import json
 
 app = Flask(__name__)
 
@@ -27,10 +28,8 @@ def solveEq():
     for i, expression in enumerate(expressions):
         expressions[i] = parse_expr(expression)
     eq = expressions[0] - expressions[1]
-    print("soloutions are:")
-    #, Symbol(variable)
-    print(solve(eq, Symbol(variable)))
-    return jsonify(solve(eq, Symbol(variable)))
+    results = str(solve(eq, Symbol(variable)))
+    return json.dumps(results)
 
 if __name__ == "__main__":
     print('oh hello')

@@ -12,7 +12,7 @@ $(document).ready(function(){
   setTimeout(function () {
     console.log(window.frames['mathFrame'].processMath());
     console.log(window.frames['mathFrame'].solveEq("2=y*3","y"));
-    console.log(window.frames['mathFrame'].solveEq("4=z**2","z"));
+    console.log(window.frames['mathFrame'].solveEq("2*x=2","x"));
   }, 5000);
 });
 
